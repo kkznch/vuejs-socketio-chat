@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>WebSocketTest</title>
+    <link rel="stylesheet" href="css/styles.css">
+
+    <script src="js/vendor/socket.io.js"></script>
+
+    <script>
+        const url = 'http://localhost:3000';
+        let socket = io.connect(url);
+
+        // サーバ接続時のイベント
+        socket.on("connect", function () {
+            console.log("Connected " + url);
+        });
+
+        // サーバ切断時のイベント
+        socket.on("disconnect", function () {
+            console.log("Disconnected " + url);
+        });
+
+        // サーバからメッセージ受信時のイベント
+        socket.on("S_to_C_message", function (msg) {
+            console.log(msg.value);
+        });
+
+        // サーバにメッセージを送信するメソッド
+        function sendMessage() {
+            let msg = document.getElementById("msg").value;
+
+            // 空文字チェック
+            if (msg !== "") {
+                // 送信実行
+                socket.emit("C_to_S_message", {value: msg});
+
+                // 入力欄を初期化
+                document.getElementById("msg").value = "";
+            }
+        }
+    </script>
+</head>
+
+<body>
+
+<div id="app">
+    <h1>チャット Example01</h1>
+</div>
+
+<form action="" method="post" onsubmit="return false;">
+    <input id="msg" type="text">
+    <input type="submit" value="Send" onclick="sendMessage();">
+</form>
+
+</body>
+
+</html>

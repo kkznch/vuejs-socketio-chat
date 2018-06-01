@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>WebSocketTest</title>
+    <link rel="stylesheet" href="css/styles.css">
+
+    <script src="js/vendor/vue.min.js"></script>
+    <script src="js/vendor/socket.io.js"></script>
+</head>
+
+<body>
+<div id="app">
+    <h1>チャット Example02</h1>
+
+    <div id="app">
+        <h2>受信メッセージ</h2>
+        <ul>
+            <li v-for="message in messageList">{{ message }}</li>
+        </ul>
+
+        <form @submit.prevent="sendMessage">
+            <input type="text" v-model="newMessage">
+            <input type="submit" value="Send">
+        </form>
+    </div>
+</div>
+
+<script src="js/main.js"></script>
+
+</body>
+
+</html>
