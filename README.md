@@ -3,7 +3,7 @@
 リポジトリをcloneする。
 
 ```
-$ git clone https://github.com/kkznch/vuejs-socketio-chat.git
+$ git clone git@github.com:kkznch/vuejs-socketio-chat.git
 ```
 
 フォルダに入ってyarnインストールするやーん。
